@@ -110,6 +110,24 @@ const getArticleImage = (req, res) => {
   })
 }
 
+const searchArticle = async (req, res) => {
+  let { search } = req.params
+
+  let query = await Article.find({
+    "$or": [
+      { "title": { "$regex": search, "$options": "i" } },
+      { "content": { "$regex": search, "$options": "i" } }
+    ]
+  })
+    .sort({ date: -1 })
+    .exec()
+
+  if (!query || query.length === 0) {
+    return res.status(404).json({ status: "error", message: "Not Found Articles" })
+  }
+  return res.status(200).json({ status: "success", message: "get articles", articles: query })
+}
+
 module.exports = {
   create,
   get,
@@ -117,5 +135,6 @@ module.exports = {
   deleteById,
   updateById,
   uploadImage,
-  getArticleImage
+  getArticleImage,
+  searchArticle
 }

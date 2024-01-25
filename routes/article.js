@@ -18,6 +18,7 @@ router.delete("/article/:id", ArticleController.deleteById)
 router.put("/article/:id", ArticleController.updateById)
 router.post("/upload-image/:id", [uploads.single("file0")], ArticleController.uploadImage)
 router.get("/image/:file", ArticleController.getArticleImage)
+router.get("/search/:search", ArticleController.searchArticle)
 
 
 module.exports = router
