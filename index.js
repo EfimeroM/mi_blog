@@ -1,9 +1,9 @@
-const { connection } = require("./database/connection")
 const express = require("express")
 const cors = require("cors")
-const { PORT } = require("./config")
 
-console.log("Node App started!")
+const { connection } = require("./database/connection")
+const { swaggerDocs } = require("./swagger")
+const { PORT } = require("./config")
 
 connection()
 
@@ -17,4 +17,7 @@ const articles_routes = require("./routes/article")
 
 app.use("/api", articles_routes)
 
-app.listen(PORT, () => console.log(`Running server in port: ${PORT}`))
+app.listen(PORT, () => {
+  console.log(`Running server in port: ${PORT}`)
+  swaggerDocs(app, PORT)
+})

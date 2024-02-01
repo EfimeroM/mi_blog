@@ -21,7 +21,7 @@ const create = async (req, res) => {
 }
 
 const get = async (req, res) => {
-  let quantity = req.params.quantity
+  let quantity = req.query.quantity
 
   let query = await Article.find().limit(quantity ? quantity : null).sort({ date: -1 }).exec()
   if (!query) {
@@ -32,9 +32,14 @@ const get = async (req, res) => {
 
 const getById = async (req, res) => {
   let { id } = req.params
-
-  let query = await Article.findById(id)
-  if (!query) {
+  let query
+  
+  try {
+    query = await Article.findById(id)
+    if (!query) {
+      throw new Error("Error to get article by id")
+    }
+  } catch (error) {
     return res.status(404).json({ status: "error", message: "article not found" })
   }
   return res.status(200).json({ status: "success", message: "Get article by id", article: query, count: query.length })
@@ -46,7 +51,7 @@ const deleteById = async (req, res) => {
   let query = await Article.findOneAndDelete({ _id: id }).exec()
 
   if (!query) {
-    return res.status(500).json({ status: "error", message: "Error to delete article" })
+    return res.status(404).json({ status: "error", message: "Error to delete article" })
   }
   return res.status(200).json({ status: "success", message: "Deleted article", article: query })
 }
@@ -63,7 +68,7 @@ const updateById = async (req, res) => {
 
   let query = await Article.findOneAndUpdate({ _id: id }, data, { new: true })
   if (!query) {
-    return res.status(500).json({ status: "error", message: "Error to update article" })
+    return res.status(404).json({ status: "error", message: "Error to update article" })
   }
   return res.status(200).json({ status: "success", message: "updated article", article: query })
 }
@@ -92,7 +97,7 @@ const uploadImage = async (req, res) => {
 
     let query = await Article.findOneAndUpdate({ _id: id }, { image: req.file.filename }, { new: true })
     if (!query) {
-      return res.status(500).json({ status: "error", message: "Error to update article" })
+      return res.status(404).json({ status: "error", message: "Error to update article" })
     }
     return res.status(200).json({ status: "success", message: "updated article", article: query, file: req.file })
   }
@@ -125,7 +130,7 @@ const searchArticle = async (req, res) => {
   if (!query || query.length === 0) {
     return res.status(404).json({ status: "error", message: "Not Found Articles" })
   }
-  return res.status(200).json({ status: "success", message: "get articles", articles: query })
+  return res.status(200).json({ status: "success", message: "get articles", articles: query, count: query.length })
 }
 
 module.exports = {

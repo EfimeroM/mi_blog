@@ -12,7 +12,7 @@ const uploads = multer({ storage })
 const ArticleController = require("../controllers/article")
 
 router.post("/create", ArticleController.create)
-router.get("/articles/:quantity?", ArticleController.get)
+router.get("/articles", ArticleController.get)
 router.get("/article/:id", ArticleController.getById)
 router.delete("/article/:id", ArticleController.deleteById)
 router.put("/article/:id", ArticleController.updateById)

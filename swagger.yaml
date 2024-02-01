@@ -1,0 +1,282 @@
+#Config
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: API Blog
+  description: API Blog CRUD
+
+#Routes
+paths:
+  /api/create:
+    post:
+      tags:
+        - Create Article
+      summary: Create a new article
+      requestBody:
+        description: Article data to create
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Article"
+      responses:
+        "201":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Article added
+                  article:
+                    $ref: "#/components/schemas/Article"
+
+  /api/articles/:
+    get:
+      tags:
+        - Get Articles
+      summary: Get all articles
+      parameters:
+        - name: quantity
+          in: query
+          description: quantity of articles
+          required: false
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Get all articles
+                  articles:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Article"
+                  count:
+                    type: number
+                    example: 1
+  /api/article/{id}:
+    get:
+      tags:
+        - Get Article
+      summary: Get article by id
+      parameters:
+        - name: id
+          in: path
+          description: article id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Get article by id
+                  article:
+                    $ref: "#/components/schemas/Article"
+                  count:
+                    type: number
+                    example: 1
+    delete:
+      tags:
+        - Delete Article
+      summary: Delete article by id
+      parameters:
+        - name: id
+          in: path
+          description: article id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Delet article by id
+                  article:
+                    $ref: "#/components/schemas/Article"
+                  count:
+                    type: number
+                    example: 1
+    put:
+      tags:
+        - Update Article
+      summary: Update article by id
+      parameters:
+        - name: id
+          in: path
+          description: article id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Article data to update
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Article"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Update article by id
+                  article:
+                    $ref: "#/components/schemas/Article"
+                  count:
+                    type: number
+                    example: 1
+  /api/upload-image/{id}:
+    post:
+      tags:
+        - Upload Image
+      summary: Upload Image to Article by id
+      parameters:
+        - name: id
+          in: path
+          description: article id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file0:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Image added
+                  article:
+                    $ref: "#/components/schemas/Article"
+  /api/image/{file}:
+    get:
+      tags:
+        - Get Article Image
+      summary: Get Article image by path
+      parameters:
+        - name: file
+          in: path
+          description: file path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            image/*:
+              example: <Binary Data for Image>
+  /api/search/{search}:
+    get:
+      tags:
+        - Get Articles with search
+      summary: Get Articles with search
+      parameters:
+        - name: search
+          in: path
+          description: string search
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Get articles
+                  articles:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Article"
+                  count:
+                    type: number
+                    example: 1
+#Schemas
+components:
+  schemas:
+    Article:
+      type: object
+      properties:
+        _id:
+          type: string
+          example: 65b2b5b4ddba133c7ceefed4
+        title:
+          type: string
+          example: Tailwind css y React JS
+        content:
+          type: string
+          example: En este curso aprenderás cómo usar Tailwind css en React JS
+        data:
+          type: string
+          example: 2024-01-25T19:25:40.448Z
+        image:
+          type: string
+          example: article1706215503076Tailwind.png
+        hidden:
+          type: boolean
+          example: false
