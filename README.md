@@ -26,7 +26,7 @@ This REST API was created for a blog project, which allows for listing, adding, 
 
 ## Dependences
 
-`express` `mongoose` `cors` `dotenv` `multer` `validator`
+`express` `mongoose` `cors` `dotenv` `multer` `validator` `swagger-ui-express` `yamljs`
 
 ## Documentation
 
