@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose")
 const ArticleSchema = Schema({
   title: {
     type: String,
-    require: true
+    required: true
   },
   content: {
     type: String,

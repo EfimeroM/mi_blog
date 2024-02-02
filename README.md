@@ -1,9 +1,14 @@
 # Api Rest - Blog
+
 ###### `Dev - Juan Martin Perez`
 
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/de91fca307a83d75fc5b1f6ce24540454acead41/icons/NodeJS-Dark.svg" alt="Ejemplo de imagen" width="50"/>
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/de91fca307a83d75fc5b1f6ce24540454acead41/icons/ExpressJS-Dark.svg" alt="Ejemplo de imagen" width="50"/>
-<img src="https://raw.githubusercontent.com/tandpfun/skill-icons/de91fca307a83d75fc5b1f6ce24540454acead41/icons/MongoDB.svg" alt="Ejemplo de imagen" width="50"/>
+<div style="display: flex">
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/de91fca307a83d75fc5b1f6ce24540454acead41/icons/NodeJS-Dark.svg" alt="Ejemplo de imagen" width="50" style="margin-right: 20px" />
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/de91fca307a83d75fc5b1f6ce24540454acead41/icons/ExpressJS-Dark.svg" alt="Ejemplo de imagen" width="50"
+  style="margin-right: 20px" />
+  <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/de91fca307a83d75fc5b1f6ce24540454acead41/icons/MongoDB.svg" alt="Ejemplo de imagen" width="50"
+  style="margin-right: 20px" />
+</div>
 
 ## Description
 
@@ -25,14 +30,16 @@ This REST API was created for a blog project, which allows for listing, adding, 
 
 ## Documentation
 
-## Social Links
+local path: /api/docs
 
-<a href="https://github.com/EfimeroM?tab=repositories" target="_blank">
+## My Social Links
+
+<a href="https://github.com/EfimeroM?tab=repositories" target="_blank" style="margin-right: 20px" >
   <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/de91fca307a83d75fc5b1f6ce24540454acead41/icons/Github-Dark.svg" alt="LinkedIn Juan Martin Perez" width="30">
 </a>
-<a href="https://www.linkedin.com/in/juan-martin-perez/" target="_blank">
+<a href="https://www.linkedin.com/in/juan-martin-perez/" target="_blank" style="margin-right: 20px">
   <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/de91fca307a83d75fc5b1f6ce24540454acead41/icons/LinkedIn.svg" alt="LinkedIn Juan Martin Perez" width="30">
 </a>
-<a href="mailto:martinperez9713@gmail.com" target="_blank">
+<a href="mailto:martinperez9713@gmail.com" target="_blank" style="margin-right: 20px">
   <img src="https://raw.githubusercontent.com/tandpfun/skill-icons/de91fca307a83d75fc5b1f6ce24540454acead41/icons/Gmail-Dark.svg" alt="LinkedIn Juan Martin Perez" width="30">
 </a>

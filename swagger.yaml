@@ -25,16 +25,19 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: Article added
-                  article:
-                    $ref: "#/components/schemas/Article"
+                $ref: "#/components/schemas/Article"
+              examples:
+                articleResponse:
+                  value:
+                    status: success
+                    message: Article added
+                    article:
+                      title: "Tailwind css y React JS"
+                      content: "En este curso aprenderás cómo usar Tailwind css en React JS"
+                      date: "2024-01-25T19:25:40.448Z"
+                      image: "article1706215503076Tailwind.png"
+                      hidden: false
+                      _id: "65b2b5b4ddba133c7ceefed4"
 
   /api/articles/:
     get:
@@ -67,8 +70,21 @@ paths:
                     items:
                       $ref: "#/components/schemas/Article"
                   count:
-                    type: number
+                    type: integer
                     example: 1
+              examples:
+                articleArrayResponse:
+                  value:
+                    status: success
+                    message: Get all articles
+                    articles:
+                      - title: "Tailwind css y React JS"
+                        content: "En este curso aprenderás cómo usar Tailwind css en React JS"
+                        date: "2024-01-25T19:25:40.448Z"
+                        image: "article1706215503076Tailwind.png"
+                        hidden: false
+                        _id: "65b2b5b4ddba133c7ceefed4"
+                    count: 1
   /api/article/{id}:
     get:
       tags:
@@ -87,19 +103,20 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: Get article by id
-                  article:
-                    $ref: "#/components/schemas/Article"
-                  count:
-                    type: number
-                    example: 1
+                $ref: "#/components/schemas/Article"
+              examples:
+                articleResponse:
+                  value:
+                    status: success
+                    message: Get article by id
+                    article:
+                      title: "Tailwind css y React JS"
+                      content: "En este curso aprenderás cómo usar Tailwind css en React JS"
+                      date: "2024-01-25T19:25:40.448Z"
+                      image: "article1706215503076Tailwind.png"
+                      hidden: false
+                      _id: "65b2b5b4ddba133c7ceefed4"
+                    count: 1
     delete:
       tags:
         - Delete Article
@@ -117,19 +134,19 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: Delet article by id
-                  article:
-                    $ref: "#/components/schemas/Article"
-                  count:
-                    type: number
-                    example: 1
+                $ref: "#/components/schemas/Article"
+              examples:
+                articleResponse:
+                  value:
+                    status: success
+                    message: Get article by id
+                    article:
+                      title: "Tailwind css y React JS"
+                      content: "En este curso aprenderás cómo usar Tailwind css en React JS"
+                      date: "2024-01-25T19:25:40.448Z"
+                      image: "article1706215503076Tailwind.png"
+                      hidden: false
+                      _id: "65b2b5b4ddba133c7ceefed4"
     put:
       tags:
         - Update Article
@@ -154,19 +171,20 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: Update article by id
-                  article:
-                    $ref: "#/components/schemas/Article"
-                  count:
-                    type: number
-                    example: 1
+                $ref: "#/components/schemas/Article"
+              examples:
+                articleResponse:
+                  value:
+                    status: success
+                    message: Updated article
+                    article:
+                      title: "Tailwind css y React JS"
+                      content: "En este curso aprenderás cómo usar Tailwind css en React JS"
+                      date: "2024-01-25T19:25:40.448Z"
+                      image: "article1706215503076Tailwind.png"
+                      hidden: false
+                      _id: "65b2b5b4ddba133c7ceefed4"
+                    count: 1
   /api/upload-image/{id}:
     post:
       tags:
@@ -195,16 +213,28 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  status:
-                    type: string
-                    example: success
-                  message:
-                    type: string
-                    example: Image added
-                  article:
-                    $ref: "#/components/schemas/Article"
+                $ref: "#/components/schemas/Article"
+              examples:
+                articleResponse:
+                  value:
+                    status: success
+                    message: Updated article
+                    article:
+                      title: "Tailwind css y React JS"
+                      content: "En este curso aprenderás cómo usar Tailwind css en React JS"
+                      date: "2024-01-25T19:25:40.448Z"
+                      image: "article1706215503076Tailwind.png"
+                      hidden: false
+                      _id: "65b2b5b4ddba133c7ceefed4"
+                    file:
+                      fieldname: "file0"
+                      originalname: "cell.png"
+                      encoding: "7bit"
+                      mimetype: "image/png"
+                      destination: "./images/articles"
+                      filename: "article1706807075611cell.png"
+                      path: "images\\articles\\article1706807075611cell.png"
+                      size: 112674
   /api/image/{file}:
     get:
       tags:
@@ -223,6 +253,7 @@ paths:
           content:
             image/*:
               example: <Binary Data for Image>
+              description: Return a image
   /api/search/{search}:
     get:
       tags:
@@ -248,35 +279,39 @@ paths:
                     example: success
                   message:
                     type: string
-                    example: Get articles
+                    example: Get Articles with search
                   articles:
                     type: array
                     items:
                       $ref: "#/components/schemas/Article"
                   count:
-                    type: number
+                    type: integer
                     example: 1
+              examples:
+                articleArrayResponse:
+                  value:
+                    status: success
+                    message: Get Articles with search
+                    articles:
+                      - title: "Tailwind css y React JS"
+                        content: "En este curso aprenderás cómo usar Tailwind css en React JS"
+                        date: "2024-01-25T19:25:40.448Z"
+                        image: "article1706215503076Tailwind.png"
+                        hidden: false
+                        _id: "65b2b5b4ddba133c7ceefed4"
+                    count: 1
 #Schemas
 components:
   schemas:
     Article:
       type: object
       properties:
-        _id:
-          type: string
-          example: 65b2b5b4ddba133c7ceefed4
         title:
           type: string
           example: Tailwind css y React JS
         content:
           type: string
           example: En este curso aprenderás cómo usar Tailwind css en React JS
-        data:
-          type: string
-          example: 2024-01-25T19:25:40.448Z
         image:
           type: string
           example: article1706215503076Tailwind.png
-        hidden:
-          type: boolean
-          example: false
